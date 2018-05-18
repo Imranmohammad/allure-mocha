@@ -26,6 +26,13 @@
   "dependencies": {
     "allure-js-commons": "^1.3.2"
   },
+  "scripts": {
+      "clean": "rm -rf allure-results",
+      "pretest": "npm run clean",
+      "test": "multi='progress=- nightwatch-allure-reporter=-' nightwatch",
+      "prereport": "cp environment.properties allure-results/",
+      "report": "allure generate allure-results -o allure-report && allure report open -o allure-report"
+  },
   "peerDependencies": {
     "mocha": "*"
   }
